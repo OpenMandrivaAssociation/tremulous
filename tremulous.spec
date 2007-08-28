@@ -87,7 +87,6 @@ install -D -m 644 %{SOURCE1} %{buildroot}%{_datadir}/icons/%{name}.png
 install -d %{buildroot}%{_datadir}/applications
 cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
-Encoding=UTF-8
 Name=Tremulous
 Comment=Team based FPS/RTS
 Exec=soundwrapper %_gamesbindir/%{name}
