@@ -5,7 +5,7 @@
 %define srcname %{name}-%{version}-src
 %define gamelibdir %{_libdir}/games/%{name}
 
-Summary: An open source game that blends a team based FPS with elements of an RTS.
+Summary: An open source game that blends a team based FPS with elements of an RTS
 Name: %{name}
 Version: %{version}
 Release: %{release}
