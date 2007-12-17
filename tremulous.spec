@@ -15,7 +15,6 @@ Source1: http://www.gnome-look.org/content/files/42942-Tremulous2.png
 License: GPL 
 Group: Games/Arcade
 Url: http://tremulous.net
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Buildrequires: libSDL-devel libopenal-devel mesagl-devel
 Requires: %name-maps
 
