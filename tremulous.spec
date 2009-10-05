@@ -12,6 +12,8 @@ Release: %{release}
 Source0: http://ovh.dl.sourceforge.net/sourceforge/tremulous/%{name}-%{version}.zip
 # http://www.gnome-look.org/content/show.php?content=42942
 Source1: http://www.gnome-look.org/content/files/42942-Tremulous2.png
+Patch0:	%name-qdir.patch
+Patch1:	%name-1725.patch
 License: GPL 
 Group: Games/Arcade
 Url: http://tremulous.net
@@ -61,6 +63,9 @@ Provides the pk3 files needed for tremulous
 # I found cleaner to build the rpm from the original zip file
 # instead of manually splitting the files
 tar -xvzf %{srcname}.tar.gz
+cd %{srcname}
+%patch0 -p1
+%patch1 -p1
 
 %build
 make -C %{srcname}
