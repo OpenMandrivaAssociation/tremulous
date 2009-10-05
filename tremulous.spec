@@ -1,6 +1,6 @@
 %define name tremulous
 %define version 1.1.0
-%define release %mkrel 6
+%define release %mkrel 7
 
 %define srcname %{name}-%{version}-src
 %define gamelibdir %{_libdir}/games/%{name}
