@@ -1,8 +1,9 @@
 %define name tremulous
 %define version 1.1.0
-%define release %mkrel 8
+%define release %mkrel 9
 
-%define srcname %{name}-%{version}-src
+%define client_release 1.011
+%define srcname Release_%{client_release}
 %define gamelibdir %{_libdir}/games/%{name}
 
 Summary: An open source game that blends a team based FPS with elements of an RTS
@@ -12,13 +13,18 @@ Release: %{release}
 Source0: http://ovh.dl.sourceforge.net/sourceforge/tremulous/%{name}-%{version}.zip
 # http://www.gnome-look.org/content/show.php?content=42942
 Source1: http://www.gnome-look.org/content/files/42942-Tremulous2.png
-Patch0:	%name-qdir.patch
-Patch1:	%name-1725.patch
+
+# The original client is generating troubles on x64.
+# kevlarman from the tremulous irc chan consider svn://source.mercenariesguild.net/client better
+# In the fact, it works far better
+# Tremulous 1.2 will make that workaround useless
+Source2: %{name}-client-%{client_release}.tar.bz2
+Patch0:	%name-1725.patch
 License: GPL 
 Group: Games/Arcade
 Url: http://tremulous.net
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-Buildrequires: libSDL-devel libopenal-devel mesagl-devel
+Buildrequires: libSDL-devel libopenal-devel mesagl-devel freetype2-devel
 Requires: %name-maps
 
 %description
@@ -62,10 +68,9 @@ Provides the pk3 files needed for tremulous
 # This zip file contains the pak files the tar.gz doesn't provides
 # I found cleaner to build the rpm from the original zip file
 # instead of manually splitting the files
-tar -xvzf %{srcname}.tar.gz
+tar -xvjf %SOURCE2
 cd %{srcname}
 %patch0 -p1
-%patch1 -p1
 
 %build
 make -C %{srcname}
