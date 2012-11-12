@@ -1,0 +1,26 @@
+--- trunk/src/tools/asm/cmdlib.c	2007/11/03 00:06:23	1034
++++ trunk/src/tools/asm/cmdlib.c	2009/10/03 15:17:16	1725
+@@ -186,7 +186,7 @@
+ 	vsprintf (text, format, argptr);
+ 	va_end (argptr);
+ 
+-  printf(text);
++  printf("%s", text);
+ 
+ #ifdef WIN32
+   if (!lookedForServer) {
+@@ -397,10 +397,12 @@
+ 	int i = 0;
+ 
+ #ifdef WIN32
+-   _getcwd (out, 256);
++   if (_getcwd (out, 256) == NULL)
++     strcpy(out, ".");  /* shrug */
+    strcat (out, "\\");
+ #else
+-   getcwd (out, 256);
++   if (getcwd (out, 256) == NULL)
++     strcpy(out, ".");  /* shrug */
+    strcat (out, "/");
+ #endif
+ 
