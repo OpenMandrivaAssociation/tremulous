@@ -1,6 +1,6 @@
 %define name tremulous
 %define version 1.1.0
-%define release %mkrel 9
+%define release 10
 
 %define client_release 1.011
 %define srcname Release_%{client_release}
@@ -23,8 +23,8 @@ Patch0:	%name-1725.patch
 License: GPL 
 Group: Games/Arcade
 Url: http://tremulous.net
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-Buildrequires: libSDL-devel libopenal-devel mesagl-devel freetype2-devel
+BuildRequires: libSDL-devel libopenal-devel mesagl-devel freetype2-devel
+BuildRequires: mesaglu-devel
 Requires: %name-maps
 
 %description
@@ -136,4 +136,50 @@ rm -rf %{buildroot}
 %doc COPYING CC
 %{gamelibdir}/base/*pk3
 
+
+
+
+%changelog
+* Tue Oct 13 2009 Erwan Velu <erwan@mandriva.org> 1.1.0-9mdv2010.0
++ Revision: 457200
+- Using the mercenariesguild solves some x64 issues
+  It also fix many more bugs of the game
+
+* Mon Oct 05 2009 Guillaume Rousse <guillomovitch@mandriva.org> 1.1.0-8mdv2010.0
++ Revision: 454313
+- rebuild for new libopenal
+
+* Mon Oct 05 2009 Erwan Velu <erwan@mandriva.org> 1.1.0-7mdv2010.0
++ Revision: 453888
+- Adding two patches : one for prevent a gcc error, another to prevent a memory corruption
+- Rebuild
+
+  + Thierry Vignaud <tvignaud@mandriva.com>
+    - rebuild
+    - rebuild
+    - rebuild
+    - kill re-definition of %%buildroot on Pixel's request
+    - fix summary-ended-with-dot
+    - kill desktop-file-validate's 'warning: key "Encoding" in group "Desktop Entry" is deprecated'
+
+  + Pixel <pixel@mandriva.com>
+    - rpm filetriggers deprecates update_menus/update_scrollkeeper/update_mime_database/update_icon_cache/update_desktop_database/post_install_gconf_schemas
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+
+* Thu Jan 04 2007 Olivier Blin <oblin@mandriva.com> 1.1.0-3mdv2007.0
++ Revision: 103939
+- fix wrapper script
+
+* Fri Dec 01 2006 Olivier Blin <oblin@mandriva.com> 1.1.0-2mdv2007.1
++ Revision: 89884
+- buildrequires mesagl-devel
+- add icon and menu entry
+- add a wrapper in _gamesbindir and install data files in _libdir/games
+- Import tremulous
+
+* Mon Apr 10 2006 Erwan Velu <erwan@seanodes.com> 1.1.0-1mdk
+- Initial Relase
 
