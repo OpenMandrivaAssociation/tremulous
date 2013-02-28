@@ -19,7 +19,10 @@ Patch0:		%name-1725.patch
 License:	GPL 
 Group:		Games/Arcade
 Url:		http://tremulous.net
-BuildRequires:	libSDL-devel libopenal-devel mesagl-devel freetype2-devel
+BuildRequires:	libSDL-devel
+BuildRequires:	libopenal-devel
+BuildRequires:	mesagl-devel
+BuildRequires:	pkgconfig(freetype2)
 BuildRequires:	mesaglu-devel
 Requires:	%{name}-maps
 
