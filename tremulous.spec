@@ -15,6 +15,7 @@ Source1:	http://www.gnome-look.org/content/files/42942-Tremulous2.png
 # In the fact, it works far better
 # Tremulous 1.2 will make that workaround useless
 Source2:	%{name}-client-%{client_release}.tar.bz2
+Source3:	tremulous.rpmlintrc
 Patch0:		%name-1725.patch
 License:	GPL 
 Group:		Games/Arcade
