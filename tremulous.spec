@@ -1,31 +1,27 @@
-%define name tremulous
-%define version 1.1.0
-%define release 10
-
 %define client_release 1.011
 %define srcname Release_%{client_release}
 %define gamelibdir %{_libdir}/games/%{name}
 
-Summary: An open source game that blends a team based FPS with elements of an RTS
-Name: %{name}
-Version: %{version}
-Release: %{release}
-Source0: http://ovh.dl.sourceforge.net/sourceforge/tremulous/%{name}-%{version}.zip
+Summary:	An open source game that blends a team based FPS with elements of an RTS
+Name:		tremulous
+Version:	1.1.0
+Release:	11
+Source0:	http://ovh.dl.sourceforge.net/sourceforge/tremulous/%{name}-%{version}.zip
 # http://www.gnome-look.org/content/show.php?content=42942
-Source1: http://www.gnome-look.org/content/files/42942-Tremulous2.png
+Source1:	http://www.gnome-look.org/content/files/42942-Tremulous2.png
 
 # The original client is generating troubles on x64.
 # kevlarman from the tremulous irc chan consider svn://source.mercenariesguild.net/client better
 # In the fact, it works far better
 # Tremulous 1.2 will make that workaround useless
-Source2: %{name}-client-%{client_release}.tar.bz2
-Patch0:	%name-1725.patch
-License: GPL 
-Group: Games/Arcade
-Url: http://tremulous.net
-BuildRequires: libSDL-devel libopenal-devel mesagl-devel freetype2-devel
-BuildRequires: mesaglu-devel
-Requires: %name-maps
+Source2:	%{name}-client-%{client_release}.tar.bz2
+Patch0:		%name-1725.patch
+License:	GPL 
+Group:		Games/Arcade
+Url:		http://tremulous.net
+BuildRequires:	libSDL-devel libopenal-devel mesagl-devel freetype2-devel
+BuildRequires:	mesaglu-devel
+Requires:	%{name}-maps
 
 %description
 Tremulous is a free, open source game that blends a team based FPS
@@ -54,10 +50,10 @@ removing their ability to respawn by destroying their spawn structures.
 # to provide a newest small binary but users will keep their maps
 # There's no need to update the maps until they don't change ;)
 %package maps
-Summary: Maps for Tremulous 
-License: CC 
-Group: Games/Arcade
-Requires: %name
+Summary:	Maps for Tremulous 
+License:	CC 
+Group:		Games/Arcade
+Requires:	%name
 
 %description maps
 Provides the pk3 files needed for tremulous
@@ -76,7 +72,6 @@ cd %{srcname}
 make -C %{srcname}
 
 %install
-rm -rf %{buildroot}
 install -d %{buildroot}%{gamelibdir}/base
 install -m 644 base/*.{cfg,pk3} %{buildroot}%{gamelibdir}/base
 pushd %{srcname}/build/release-*
@@ -106,21 +101,7 @@ Type=Application
 Categories=Game;ArcadeGame;X-MandrivaLinux-MoreApplications-Games-Arcade;
 EOF
 
-%clean
-rm -rf %{buildroot}
-
-%if %mdkversion < 200900
-%post
-%update_menus
-%endif
-
-%if %mdkversion < 200900
-%postun
-%clean_menus
-%endif
-
 %files
-%defattr(-,root,root)
 %doc COPYING GPL ChangeLog manual.pdf
 %{_gamesbindir}/%{name}
 %{gamelibdir}/%{name}.*
