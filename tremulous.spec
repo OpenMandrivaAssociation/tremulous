@@ -5,7 +5,7 @@
 Summary:	An open source game that blends a team based FPS with elements of an RTS
 Name:		tremulous
 Version:	1.1.0
-Release:	12
+Release:	13
 Source0:	http://ovh.dl.sourceforge.net/sourceforge/tremulous/%{name}-%{version}.zip
 # http://www.gnome-look.org/content/show.php?content=42942
 Source1:	http://www.gnome-look.org/content/files/42942-Tremulous2.png
