@@ -19,7 +19,7 @@ Source3:	tremulous.rpmlintrc
 Patch0:		%name-1725.patch
 License:	GPL 
 Group:		Games/Arcade
-Url:		http://tremulous.net
+Url:		https://tremulous.net
 BuildRequires:	libSDL-devel
 BuildRequires:	libopenal-devel
 BuildRequires:	mesagl-devel
